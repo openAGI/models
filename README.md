@@ -9,8 +9,10 @@
 
 
 # Requirements
+```Shell
 sudo apt-get install python-opencv
 pip install scipy
 pip install Cython
 pip install git+https://github.com/lucasb-eyer/pydensecrf.git
 pip install tefla
+```
