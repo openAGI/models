@@ -1,18 +1,17 @@
 from tefla.core.layer_arg_ops import common_layer_args, make_args, end_points
-from tefla.core.layers import input, conv2d, fully_connected, max_pool, softmax, prelu, dropout
+from tefla.core.layers import conv2d, fully_connected, max_pool, softmax, prelu, dropout
 
 
 width = 28
 height = 28
 
 
-def model(is_training, reuse, num_classes=10):
+def model(x, is_training, reuse, num_classes=10):
     common_args = common_layer_args(is_training, reuse)
     conv_args = make_args(batch_norm=True, activation=prelu, **common_args)
     fc_args = make_args(activation=prelu, **common_args)
     logit_args = make_args(activation=None, **common_args)
 
-    x = input((None, height, width, 1), **common_args)
     x = conv2d(x, 32, name='conv1_1', **conv_args)
     x = conv2d(x, 32, name='conv1_2', **conv_args)
     x = max_pool(x, name='pool1', **common_args)
