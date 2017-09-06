@@ -10,6 +10,8 @@ __pycache__/
 .Python
 weights/
 weights
+data
+data/
 env/
 build/
 develop-eggs/
