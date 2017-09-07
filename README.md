@@ -6,11 +6,19 @@
 4. Unrolled GAN implementation
 5. LSTM RNN example
 6. Common datasets reading examples. 
+7. Autonencoder using Gumbel Softmax
 
+## Pretrained Weights
+1. [VGG19 Trained on ImageNet](https://drive.google.com/file/d/0B9ScQjaDDiwpRnVqZV9JQmh4ZE0/view?usp=sharing)
+2. [Inception_Resnet_v2 trained on ImageNet](https://drive.google.com/file/d/0B9ScQjaDDiwpTk1kNDBqT1lKRUU/view?usp=sharing)
 
 # Requirements
 ```Shell
-sudo apt-get install python-opencv
+[GPU version]
+pip install tensorflow-gpu>=1.2.0
+[CPU version]
+pip install tensorflow>=1.2.0
+
 pip install scipy
 pip install Cython
 pip install git+https://github.com/lucasb-eyer/pydensecrf.git
