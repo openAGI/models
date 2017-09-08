@@ -7,6 +7,7 @@
 5. LSTM RNN example
 6. Common datasets reading examples. 
 7. Autonencoder using Gumbel Softmax
+8. Classification networks, Incpetion resnet, SENET, Xception, RESNET
 
 ## Pretrained Weights
 1. [VGG19 Trained on ImageNet](https://drive.google.com/file/d/0B9ScQjaDDiwpRnVqZV9JQmh4ZE0/view?usp=sharing)
