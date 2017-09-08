@@ -1,13 +1,13 @@
 # Examples using tefla.
 
-1. Imagnet classification using Incepion resnet v2
+1. Imagnet classification using Inception resnet v2
 2. Variational autoencoder training
 3. Spatial transformer network traning.
 4. Unrolled GAN implementation
 5. LSTM RNN example
 6. Common datasets reading examples. 
 7. Autonencoder using Gumbel Softmax
-8. Classification networks, Incpetion resnet, SENET, Xception, RESNET
+8. Classification networks, Inception resnet, SENET, Xception, RESNET
 
 ## Pretrained Weights
 1. [VGG19 Trained on ImageNet](https://drive.google.com/file/d/0B9ScQjaDDiwpRnVqZV9JQmh4ZE0/view?usp=sharing)
