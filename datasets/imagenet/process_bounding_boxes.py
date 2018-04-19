@@ -165,21 +165,20 @@ def ProcessXMLAnnotation(xml_file):
 
   return boxes
 
+
 if __name__ == '__main__':
   if len(sys.argv) < 2 or len(sys.argv) > 3:
-    print('Invalid usage\n'
-          'usage: process_bounding_boxes.py <dir> [synsets-file]',
-          file=sys.stderr)
+    print(
+        'Invalid usage\n'
+        'usage: process_bounding_boxes.py <dir> [synsets-file]', file=sys.stderr)
     sys.exit(-1)
 
   xml_files = glob.glob(sys.argv[1] + '/*/*.xml')
-  print('Identified %d XML files in %s' % (len(xml_files), sys.argv[1]),
-        file=sys.stderr)
+  print('Identified %d XML files in %s' % (len(xml_files), sys.argv[1]), file=sys.stderr)
 
   if len(sys.argv) == 3:
     labels = set([l.strip() for l in open(sys.argv[2]).readlines()])
-    print('Identified %d synset IDs in %s' % (len(labels), sys.argv[2]),
-          file=sys.stderr)
+    print('Identified %d synset IDs in %s' % (len(labels), sys.argv[2]), file=sys.stderr)
   else:
     labels = None
 
@@ -214,18 +213,15 @@ if __name__ == '__main__':
             continue
 
       # Guard against improperly specified boxes.
-      if (bbox.xmin_scaled >= bbox.xmax_scaled or
-          bbox.ymin_scaled >= bbox.ymax_scaled):
+      if (bbox.xmin_scaled >= bbox.xmax_scaled or bbox.ymin_scaled >= bbox.ymax_scaled):
         skipped_boxes += 1
         continue
 
       # Note bbox.filename occasionally contains '%s' in the name. This is
       # data set noise that is fixed by just using the basename of the XML file.
       image_filename = os.path.splitext(os.path.basename(one_file))[0]
-      print('%s.JPEG,%.4f,%.4f,%.4f,%.4f' %
-            (image_filename,
-             bbox.xmin_scaled, bbox.ymin_scaled,
-             bbox.xmax_scaled, bbox.ymax_scaled))
+      print('%s.JPEG,%.4f,%.4f,%.4f,%.4f' % (image_filename, bbox.xmin_scaled, bbox.ymin_scaled,
+                                             bbox.xmax_scaled, bbox.ymax_scaled))
 
       saved_boxes += 1
       found_box = True
@@ -235,18 +231,15 @@ if __name__ == '__main__':
       skipped_files += 1
 
     if not file_index % 5000:
-      print('--> processed %d of %d XML files.' %
-            (file_index + 1, len(xml_files)),
-            file=sys.stderr)
-      print('--> skipped %d boxes and %d XML files.' %
-            (skipped_boxes, skipped_files), file=sys.stderr)
+      print('--> processed %d of %d XML files.' % (file_index + 1, len(xml_files)), file=sys.stderr)
+      print(
+          '--> skipped %d boxes and %d XML files.' % (skipped_boxes, skipped_files),
+          file=sys.stderr)
 
   print('Finished processing %d XML files.' % len(xml_files), file=sys.stderr)
-  print('Skipped %d XML files not in ImageNet Challenge.' % skipped_files,
-        file=sys.stderr)
-  print('Skipped %d bounding boxes not in ImageNet Challenge.' % skipped_boxes,
-        file=sys.stderr)
-  print('Wrote %d bounding boxes from %d annotated images.' %
-        (saved_boxes, saved_files),
-        file=sys.stderr)
+  print('Skipped %d XML files not in ImageNet Challenge.' % skipped_files, file=sys.stderr)
+  print('Skipped %d bounding boxes not in ImageNet Challenge.' % skipped_boxes, file=sys.stderr)
+  print(
+      'Wrote %d bounding boxes from %d annotated images.' % (saved_boxes, saved_files),
+      file=sys.stderr)
   print('Finished.', file=sys.stderr)
