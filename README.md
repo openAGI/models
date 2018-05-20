@@ -21,7 +21,7 @@ pip install tensorflow-gpu>=1.2.0
 pip install tensorflow>=1.2.0
 
 pip install scipy
-pip install Cython
+pip install -U Cython
 pip install git+https://github.com/lucasb-eyer/pydensecrf.git
 pip install tefla
 ```
