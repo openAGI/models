@@ -10,7 +10,7 @@ from tefla.core.rnn_cell import LSTMCell, bidirectional_rnn
 from tefla.core.mem_dataset import DataSet
 from tefla.utils.util import pad_sequences
 from tefla.utils import util
-from examples.datasets import imdb
+from datasets import imdb
 
 import tensorflow as tf
 import numpy as np

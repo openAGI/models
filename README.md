@@ -25,3 +25,10 @@ pip install -U Cython
 pip install git+https://github.com/lucasb-eyer/pydensecrf.git
 pip install tefla
 ```
+
+### Train a NLP model on the IMDB dataset
+```Shell
+[models as CWD]
+export PYTHONPATH=$PYTHONPATH:`$PWD`
+python nlp/lstm_imdb.py
+```
