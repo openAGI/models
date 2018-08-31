@@ -34,8 +34,8 @@ def train():
   training_cnf = {
       'classification':
       True,
-      'validation_scores': [('validation accuracy', tf.contrib.metrics.accuracy),
-                            ('validation kappa', kappav2.metric)],
+      'validation_scores': [('accuracy', tf.metrics.accuracy),
+                            ('kappa', tf.contrib.metrics.cohen_kappa)],
       'num_epochs':
       50,
       'batch_size_train':
