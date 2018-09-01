@@ -3,7 +3,7 @@ import scipy.misc
 import numpy as np
 import click
 
-from models.vgg import vgg_19 as model
+from nets.vgg import vgg_19 as model
 
 VGG_MEAN = [103.939, 116.779, 123.68]
 

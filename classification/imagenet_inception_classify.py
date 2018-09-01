@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 import click
 import tensorflow.contrib.slim.nets as nets
-from models import inception_resnet as inception
+from nets import inception_resnet as inception
 incept = inception.model
 
 
