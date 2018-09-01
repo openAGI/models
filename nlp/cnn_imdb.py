@@ -48,7 +48,7 @@ def main():
       'classification': True,
       'batch_size_train': 32,
       'batch_size_test': 32,
-      'validation_scores': [('validation accuracy', util.accuracy_tf)],
+      'validation_scores': [('accuracy', tf.metrics.accuracy)],
       'num_epochs': 50,
       'num_classes': 2,
       'input_size': (100, ),
