@@ -53,15 +53,18 @@ def _add_to_tfrecord(filename, tfrecord_writer, split_name=None, offset=0):
   Returns:
       The new offset.
   """
-  with open(filename, 'r') as f:
-    data = pickle.load(f)
+  with open(filename, 'rb') as f:
+    if sys.version_info > (3,):
+      data = pickle.load(f, encoding='bytes')
+    else:
+      data = pickle.load(f)
 
-  images = data['data']
+  images = data[b'data']
   num_images = images.shape[0]
 
   images = images.reshape((num_images, 3, 32, 32))
-  labels = data['labels']
-  filenames = data['filenames']
+  labels = data[b'labels']
+  filenames = data[b'filenames']
   tfrecords = TFRecords()
 
   with tf.Graph().as_default():
@@ -81,8 +84,14 @@ def _add_to_tfrecord(filename, tfrecord_writer, split_name=None, offset=0):
 
         jpg_string = sess.run(encoded_image, feed_dict={image_placeholder: image})
 
-        example = tfrecords.convert_to_example(filename_image, jpg_string, label, 'cifar',
-                                               _IMAGE_SIZE, _IMAGE_SIZE)
+        example = tfrecords.convert_to_example(filename_image, 
+                                               jpg_string, 
+                                               label, 
+                                               b'cifar',
+                                               _IMAGE_SIZE, 
+                                               _IMAGE_SIZE,
+                                               image_format=b'jpg', 
+                                               colorspace=b'RGB')
         tfrecord_writer.write(example.SerializeToString())
 
     return offset + num_images
