@@ -59,7 +59,7 @@ def bottleneck_v2(inputs, num_unit=128, name=None, **kwargs):
     return output
 
 
-def model(inputs, is_training, reuse, dropout_keep_prob=1, num_classes=5):
+def model(inputs, is_training, reuse, dropout_keep_prob=1, num_classes=5, **kwargs):
   common_args = common_layer_args(is_training, reuse)
   conv_args = make_args(untie_biases=True, batch_norm=batch_norm, **common_args)
   logit_args = make_args(activation=prelu, **common_args)

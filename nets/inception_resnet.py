@@ -2,7 +2,7 @@ from __future__ import division, print_function, absolute_import
 
 import tensorflow as tf
 from tefla.core.layer_arg_ops import common_layer_args, make_args, end_points
-from tefla.core.layers import conv2d, fully_connected, max_pool, relu, repeat
+from tefla.core.layers import conv2d, fully_connected, max_pool, prelu, repeat
 from tefla.core.layers import input, softmax, dropout, global_avg_pool, avg_pool_2d, batch_norm_tf as batch_norm
 
 
@@ -98,12 +98,12 @@ image_size = (339, 339)
 crop_size = (299, 299)
 
 
-def model(inputs, is_training, reuse, num_classes=5, drop_prob=0.2, name='InceptionResnetV2'):
+def model(inputs, is_training, reuse, num_classes=5, drop_prob=0.2, name='InceptionResnetV2', **kwargs):
   common_args = common_layer_args(is_training, reuse)
   rest_conv_params = make_args(
-      use_bias=False, batch_norm=batch_norm, activation=relu, **common_args)
+      use_bias=False, batch_norm=batch_norm, activation=prelu, **common_args)
   conv_params_no_bias = make_args(
-      use_bias=False, batch_norm=batch_norm, activation=relu, **common_args)
+      use_bias=False, batch_norm=batch_norm, activation=prelu, **common_args)
   conv_params = make_args(use_bias=True, batch_norm=batch_norm, activation=None, **common_args)
   rest_logit_params = make_args(activation=None, **common_args)
   rest_pool_params = make_args(padding='SAME', **common_args)
@@ -194,7 +194,7 @@ def model(inputs, is_training, reuse, num_classes=5, drop_prob=0.2, name='Incept
     with tf.variable_scope('Logits'):
       net = global_avg_pool(net, name='avgpool_1a_8x8')
       net = dropout(net, name='dropout', **rest_dropout_params)
-      logits = fully_connected(net, num_classes, name='Logits', **rest_logit_params)
-      predictions = softmax(logits, name='Predictions', **common_args)
+      logits = fully_connected(net, num_classes, name='logits', **rest_logit_params)
+      predictions = softmax(logits, name='predictions', **common_args)
 
   return end_points(is_training)

@@ -30,7 +30,8 @@ def model(inputs,
           num_classes=5,
           dropout_keep_prob=0.5,
           spatial_squeeze=True,
-          name='alexnet_v2'):
+          name='alexnet_v2', 
+          **kwargs):
   """AlexNet version 2.
 
   Described in: http://arxiv.org/pdf/1404.5997v2.pdf
