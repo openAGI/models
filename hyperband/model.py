@@ -5,8 +5,6 @@ from tefla.core.layers import conv2d, fully_connected, max_pool, softmax, prelu,
 width = 32
 height = 32
 
-image_size = (32, 32)
-crop_size = (28, 28)
 
 def layer_config(config, layer, layer_type='conv'):
   layer = layer_type + '_' + 'layer_'+ str(layer)

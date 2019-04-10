@@ -4,14 +4,18 @@ max_conv_layers = 0
 max_fc_layers = 3
 
 space = { 
+          'hyperband':{
+                        'max_iter':16,
+                        'eta':3,
+                      },
           'max_conv_layers': max_conv_layers,
           'max_fc_layers': max_fc_layers,
-          'batch_size_train': hp.choice( 'bs', (16,32,64,128,256)),
-          'batch_size_test': hp.choice( 'bs', (16,32)),
+          # 'batch_size_train': hp.choice( 'bs', (16,32,64,128,256)),
+          # 'batch_size_test': hp.choice( 'bs', (16,32)),
           'n_conv_layers': hp.quniform( 'c', 1, max_conv_layers, 1 ), 
           'n_fc_layers': hp.quniform( 'l', 1, max_fc_layers, 1 ), 
           'init': hp.choice( 'i', ( 'uniform', 'normal', 'glorot_uniform', 'glorot_normal', 'he_uniform', 'he_normal' )),
-          'optimizer': hp.choice( 'o', ( 'rmsprop', 'adagrad', 'adadelta', 'adam', 'adamax' )),
+          'optname': hp.choice( 'o', ( 'rmsprop', 'adagrad', 'adadelta', 'adam' )),
           'batch_norm': hp.choice( 'b', ( 'True', 'False' ))
 }
 
