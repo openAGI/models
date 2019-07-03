@@ -16,7 +16,7 @@ import tensorflow as tf
 import numpy as np
 
 
-def model(x, is_training, reuse, num_classes=2):
+def model(x, is_training, reuse, num_classes=2, **kwargs):
   common_args = common_layer_args(is_training, reuse)
   conv_args = make_args(activation=relu, **common_args)
   fc_args = make_args(activation=relu, **common_args)

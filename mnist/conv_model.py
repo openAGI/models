@@ -5,7 +5,7 @@ width = 28
 height = 28
 
 
-def model(x, is_training, reuse, num_classes=10):
+def model(x, is_training, reuse, num_classes=10, **kwargs):
   common_args = common_layer_args(is_training, reuse)
   conv_args = make_args(batch_norm=True, activation=prelu, **common_args)
   fc_args = make_args(activation=prelu, **common_args)

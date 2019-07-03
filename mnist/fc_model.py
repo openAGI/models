@@ -5,7 +5,7 @@ width = 28
 height = 28
 
 
-def model(x, is_training, reuse, num_classes=10):
+def model(x, is_training, reuse, num_classes=10, **kwargs):
   common_args = common_layer_args(is_training, reuse)
   fc_args = make_args(activation=relu, **common_args)
   logit_args = make_args(activation=None, **common_args)

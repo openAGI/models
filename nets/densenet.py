@@ -55,7 +55,7 @@ def model(inputs,
           drop_p_trans=0.0,
           n_filters=64,
           n_layers=[1, 2, 2, 3],
-          num_classes=5):
+          num_classes=5, **kwargs):
   common_args = common_layer_args(is_training, reuse)
   conv_args = make_args(
       batch_norm=True,

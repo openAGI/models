@@ -228,7 +228,8 @@ def model(inputs,
           num_classes=None,
           global_pool=True,
           output_stride=None,
-          name='resnet_v2_50'):
+          name='resnet_v2_50', 
+          **kwargs):
   """ResNet-50 model of [1].
 
   See resnet_v2() for arg and return description.
